@@ -1,0 +1,266 @@
+{
+     "alreadyHaveAccount": "Already have an account? Login below",
+     "@alreadyHaveAccount": {
+         "description": "Informative text if user already have an account"
+     },
+
+     "appName": "Bulk sms",
+     "@appName": {
+        "description": "Bulk sms"
+     },
+
+     "helloWorld": "Hello World!",
+     "@helloWorld": {
+        "description": "The conventional newborn programmer greeting"
+     },
+
+     "welcomeTitle": "Send\nmessage\neasy",
+     "@welcomeTitle": {
+        "description": "Send message easy"
+     },
+
+
+     "welcomeDesc": "Send your message easily and very well customized \nat cheaper rate \nto any part of the world",
+     "@welcomeDesc": {
+        "description": "Send your message easily and well customized at cheaper rate"
+  },
+
+     "loginText": "Login",
+     "@loginText": {
+        "description": "Login"
+  },
+
+     "signupText": "Signup",
+     "@signupText": {
+        "description": "Signup"
+  },
+
+     "appbarRegText": "Registration",
+     "@appbarRegText": {
+        "description": "Registration"
+  },
+
+     "fullName": "Full name",
+     "@fullName": {
+        "description": "Full name"
+  },
+
+     "fullNameErrorText": "Please enter your full name",
+     "@fullNameErrorText": {
+        "description": "Please enter your full name"
+  },
+
+     "phoneErrorText": "Please enter your phone number correctly",
+     "@phoneErrorText": {
+        "description": "Please enter your phone number correctly"
+  },
+
+     "phoneText": "Please make sure this phone number is correct because it would be validated",
+     "@phoneText": {
+        "description": "Please make sure this phone number is correct because it would be validated"
+  },
+
+     "phoneNumber": "Phone Number",
+     "@phoneNumber": {
+        "description": "Phone Number"
+  },
+
+     "phoneNumberCodeSent": "A code has been sent to",
+     "@phoneNumberCodeSent": {
+        "description": "A code has been sent to"
+  },
+
+     "phoneNumberCodeSent2": "Please enter the code here",
+     "@phoneNumberCodeSent2": {
+        "description": "Please enter the code here"
+  },
+
+     "done": "Done",
+     "@done": {
+        "description": "Done"
+  },
+
+     "cancel": "Cancel",
+     "@cancel": {
+     "description": "Cancel"
+  },
+
+     "validate": "Validate",
+     "@validate": {
+        "description": "Validate"
+  },
+
+     "validateTitle": "Phone Number validation",
+     "@validateTitle": {
+        "description": "Phone Number validation"
+  },
+
+     "validateEmailTitle": "Email validation",
+     "@validateEmailTitle": {
+        "description": "Email validation"
+  },
+
+     "emailSubtitle": "Please make sure this email address is correct because it would be validated",
+     "@emailSubtitle": {
+        "description": "Please make sure this email address is correct because it would be validated"
+  },
+
+     "emailText": "Enter email address",
+     "@emailText": {
+        "description": "Enter email address"
+  },
+
+     "validateEmailTitle2": "Email Address validation",
+     "@validateEmailTitle2": {
+        "description": "Email Address validation"
+  },
+
+     "passwordText": "Enter password",
+     "@passwordText": {
+        "description": "Enter password"
+  },
+
+     "submitText": "Submit",
+     "@submitText": {
+        "description": "Submit"
+  },
+
+     "loginText2": "Please login",
+     "@loginText2": {
+        "description": "Please login"
+  },
+
+     "create": "Create",
+     "@create": {
+        "description": "create"
+  },
+
+     "forgotPassword": "Forgot password?",
+     "@forgotPassword": {
+        "description": "forgot password"
+  },
+     "fundWallet": "Fund wallet",
+     "@fundWallet": {
+        "description": "Fund wallet"
+  },
+
+     "cardDetails": "Enter your card details",
+     "@cardDetails": {
+        "description": "Enter your card details"
+  },
+
+     "payWithBank": "use bank",
+     "@payWithBank": {
+        "description": "bank"
+  },
+
+     "payWithBankAccount": "Fund wallet with your bank",
+     "@payWithBankAccount": {
+        "description": "Fund wallet with your bank"
+  },
+
+     "payWithBankAccount1": "Please select your bank",
+     "@payWithBankAccount1": {
+        "description": "Please select your bank"
+  },
+
+     "payWithBankAccount2": "Please enter your account number correctly",
+     "@payWithBankAccount2": {
+        "description": "Please enter your account number correctly"
+  },
+
+     "payWithBankAccount3": "Please enter amount you want to fund",
+     "@payWithBankAccount3": {
+        "description": "Please enter amount you want to fund"
+  },
+
+     "createMessage": "Create message",
+     "@createMessage": {
+        "description": "Create message"
+  },
+
+     "sendMessage": "Send",
+     "@sendMessage": {
+        "description": "Send"
+  },
+
+     "sendMessageText": "Each message sent will cost you #1.30k\nNote: Your message is not exposed to anyone.",
+     "@sendMessageText": {
+        "description": "Send"
+  },
+
+     "confirmPassword": "Confirm password",
+     "@confirmPassword": {
+        "description": "Confirm password"
+  },
+
+     "regResponse": "Registration Not successful",
+     "@regResponse": {
+        "description": "Registration Not successful"
+  },
+
+     "loginSuccess": "Login successful",
+     "@loginSuccess": {
+        "description": "Login successful"
+  },
+
+     "loginNotSuccess": "Login not successful",
+     "@loginNotSuccess": {
+        "description": "Login not successful"
+  },
+
+     "regSuccess": "Registration successful",
+     "@regSuccess": {
+        "description": "Registration successful"
+  },
+     "emailCodeSentText": "Bulk sms email code validation",
+     "@emailCodeSentText": {
+        "description": "Registration successful"
+  },
+
+    "successful": "Successful",
+    "@successful": {
+       "description": "Successful"
+  },
+
+    "forgotPasswordText": "Forgot password",
+    "@forgotPasswordText": {
+       "description": "Forgot password"
+  },
+
+    "loading": "Loading...",
+    "@loading": {
+       "description": "Loading"
+  },
+
+    "errorText": "Sorry an error occurred",
+    "@errorText": {
+       "description": "Sorry an error occurred"
+  },
+
+    "errorText2": "Sorry we couldn't resolve card",
+    "@errorText2": {
+       "description": "Sorry we couldn't resolve card"
+  },
+
+    "transferText": "Transfer",
+    "@transferText": {
+       "description": "Transfer"
+  },
+
+    "transferText2": "Amount to be transferred",
+    "@transferText2": {
+       "description": "Amount to be transferred"
+  },
+
+    "transferText3": "Receiver's email address",
+    "@transferText3": {
+       "description": "Receiver's emil address"
+  },
+
+    "transferCaption": "These is where you can transfer funds from your account to another account",
+    "@transferCaption": {
+       "description": "Receiver's emil address"
+  }
+
+}
