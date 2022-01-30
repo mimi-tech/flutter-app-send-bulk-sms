@@ -1,10 +1,7 @@
 import 'dart:async';
-import 'package:bulk_sms/models/new_user.dart';
-import 'package:bulk_sms/models/user.dart';
 import 'package:bulk_sms/utility/colors.dart';
 import 'package:bulk_sms/utility/routes.dart';
 import 'package:bulk_sms/utility/shared_prefrences.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -32,11 +29,12 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     // Navigator.of(context).push(
     //     MaterialPageRoute(builder: (context) => HomePageScreen()));
     if (token == null || token == "") {
-
+      Navigator.pop(context);
       homeScreenPage(context);
     } else {
       //UserPreferences().removeUser();
       //UsersViewModal().getUser();
+      Navigator.pop(context);
       bottomBar(context);
     }
   }
@@ -62,9 +60,9 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   }
   @override
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
     animationController!.dispose();
+
+    super.dispose();
   }
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,5 @@
 import 'package:bulk_sms/components/appbar2.dart';
+import 'package:bulk_sms/components/constants.dart';
 import 'package:bulk_sms/components/modalProgressFunction.dart';
 import 'package:bulk_sms/components/progressIndicator.dart';
 import 'package:bulk_sms/components/sms_buttons.dart';
@@ -41,13 +42,36 @@ class _ContactScreenState extends State<ContactScreen> {
       return Scaffold(
           backgroundColor: kBlackColor,
           appBar: BulkSmsAppbarSecond(
-            title: 'Saved Contact(s)'.toUpperCase(), color: kOrangeColor,
-            deleteButton: SmsButtonsNew(
-              tapSmsButton: () {
-                ContactServicesViewModal().getDeleteContact();
-              },
-              title: 'Delete all',
-              color: kNavyColor,
+            title: 'Contact( ${modal.storedContacts.length.toString()} )'.toUpperCase(), color: kOrangeColor,
+            deleteButton: Row(
+
+              children: [
+                SmsButtonsNew(
+                  tapSmsButton: () {
+                    ContactServicesViewModal().getDeleteContact();
+                  },
+                  title: 'Delete all',
+                  color: kNavyColor,
+                ),
+
+                modal.changeIcon?
+                IconButton(onPressed: (){
+                  modal.changeCheckedIcon();
+                  newContact.clear();
+                  for(int i = 0; i < modal.storedContacts.length; i++){
+                    modal.removeContact(modal.storedContacts[i]);
+
+                  }
+                }, icon: Icon(Icons.check_box,color: kWhiteColor,))
+                    :IconButton(onPressed: (){
+                  modal.changeCheckedIcon();
+
+                    for(int i = 0; i < modal.storedContacts.length; i++){
+                    modal.addSelectedContact(modal.storedContacts[i]);
+
+                  }
+                }, icon: Icon(Icons.check_box_outline_blank,color: kWhiteColor,))
+              ],
             ),
           ),
 
@@ -65,28 +89,7 @@ class _ContactScreenState extends State<ContactScreen> {
                               .subtitle1!
                               .copyWith(color: kWhiteColor),
                         ),
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: Container(
 
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      color: kWhiteColor, width: 1.0)
-                              ),
-                              child: Padding(
-                                  padding: const EdgeInsets.all(18.0),
-                                  child: Text(modal.storedContacts.length
-                                      .toString(),
-                                    style: Theme
-                                        .of(context)
-                                        .textTheme
-                                        .subtitle1!
-                                        .copyWith(color: kWhiteColor),
-
-                                  )
-                              )),
-                        ),
                       ],
                     ),
 
@@ -135,10 +138,7 @@ class _ContactScreenState extends State<ContactScreen> {
                                                         .min,
                                                     children: [
                                                       IconButton(onPressed: () {
-                                                        modal
-                                                            .addSelectedContact(
-                                                            modal
-                                                                .storedContacts[index]);
+                                                        modal.addSelectedContact(modal.storedContacts[index]);
                                                       },
                                                           icon: Icon(Icons
                                                               .check_box_outline_blank,

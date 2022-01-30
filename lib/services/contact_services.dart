@@ -122,7 +122,6 @@ class ContactServices{
       });
      Response response = await https.post(url, headers: {'authorization': token,'Content-Type': 'application/json'},body: body);
       final Map<String,dynamic> jsonDecoded = json.decode(response.body);
-      print(jsonDecoded);
 
       if (jsonDecoded['status'] == true) {
         return Success(response: response);

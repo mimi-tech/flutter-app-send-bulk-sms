@@ -52,6 +52,7 @@ class FServices {
 
   static Future<Map<String, dynamic>> verifyCardBin(context) async {
     try {
+
       var url = Uri.parse("${dotenv.env['RESOLVE_CARD_BIN']}/$binCardNumber");
       Response response = await https.get(url, headers: {
         'Authorization': "Bearer ${dotenv.env['PAYSTACK_SECRETE_KEY']}"
@@ -62,14 +63,14 @@ class FServices {
         return responseData;
       }
       throw Exception("Invalid response");
+
     } on HttpException {
       throw Exception("No internet");
     } on FormatException {
       throw Exception("Invalid format");
     }on SocketException {
-        throw Exception("Internal server error");
+        throw Exception("No internet connection");
     } catch (e) {
-      notifyFlutterToastError(title: "Error resolving card");
       // Navigator.pop(context);
       throw Exception(e);
     }
@@ -115,7 +116,6 @@ class FServices {
       Response res = await https.get(url, headers: {
         "Authorization": 'Bearer ${dotenv.env['PAYSTACK_SECRETE_KEY']}'
       });
-      print(res.body);
       if (res.statusCode == 200) {
         final Map<String,dynamic> jsonDecoded = json.decode(res.body);
         var cardData = jsonDecoded['data']['authorization'];
@@ -192,7 +192,6 @@ throw Exception(e);
       var url = Uri.parse("${dotenv.env['CHARGE_AUTHORIZATION']}");
       Response response = await https.post(url, headers: {'Authorization': "Bearer ${dotenv.env['PAYSTACK_SECRETE_KEY']}"}, body: body);
 
-      print("charge ${response.body}");
       if (response.statusCode == 200) {
         final Map<String,dynamic> jsonDecoded = json.decode(response.body);
         //save customer id in pref
