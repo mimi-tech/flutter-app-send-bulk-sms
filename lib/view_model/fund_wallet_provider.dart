@@ -57,8 +57,6 @@ class FundWalletService2 extends ChangeNotifier{
       setBank(cardData['bank']);
       setBrand(cardData['brand']);
 
-    }else{
-      print("endpoint failed");
     }
 
   }
@@ -72,8 +70,6 @@ class FundWalletService2 extends ChangeNotifier{
       setBrand(cardData['brand']);
       //create customer
        await FServices.createCustomer(context, phoneNumber, email, fullName);
-    }else{
-      print("endpoint failed");
     }
 
   }

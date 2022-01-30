@@ -23,7 +23,7 @@ class SmsMessageServices{
 
       Map<String, String> headers = {
         "Content-type": "application/json",
-        "authorization": "12345" //"${dotenv.env['SECRETE']}"
+        "authorization": "${dotenv.env['SECRETE']}"
       };
       var body = json.encode({
         'phoneNumber': phoneNumber,
@@ -66,7 +66,7 @@ class SmsMessageServices{
 
       Map<String, String> headers = {
         "Content-type": "application/json",
-        "authorization": "12345" //"${dotenv.env['SECRETE']}"
+        "authorization": "${dotenv.env['SECRETE']}"
       };
 
       var body = json.encode({
@@ -263,7 +263,48 @@ class SmsMessageServices{
     } catch(e){
       return Failure(code: UNKNOWN_ERROR, errorResponse: "Unknown error");
 
-    }
+    }}
+
+
+
+    //delete user message
+
+    static Future<Object> updateUserMessageCount()async{
+      //var result = await UserPreferences().getUser();
+
+      try {
+        String token = await UserPreferences().getToken();
+        String userId = await UserPreferences().getUserId();
+
+        var url = Uri.parse("${dotenv.env['UPDATE_MESSAGE_COUNT']}");
+        Map<String, String> headers = {
+          "Content-type": "application/json",
+          "authorization": token
+        };
+        var body = json.encode({
+          "recieversCountNumber":sentContacts.length,
+          "authId":userId
+        });
+// make DELETE request
+        Response response = await https.put(url, headers: headers,body: body);
+        final Map<String,dynamic> jsonDecoded = json.decode(response.body);
+        if (jsonDecoded['status'] == true) {
+          return Success(response: jsonDecoded);
+
+        }
+
+        return Failure(code: USER_INVALID_RESPONSE, errorResponse: jsonDecoded['message']);
+      }on HttpException{
+        return Failure(code: NO_INTERNET, errorResponse: "Internal error server");
+      }on FormatException{
+        return Failure(code: INVALID_FORMAT, errorResponse: "Invalid format");
+      }on SocketException {
+        return Failure(code: NO_INTERNET, errorResponse: "No internet connection");
+
+      } catch(e){
+        return Failure(code: UNKNOWN_ERROR, errorResponse: "Unknown error");
+
+      }
   }
 
 
@@ -289,6 +330,7 @@ class SmsMessageServices{
       final Map<String,dynamic> jsonDecoded = json.decode(response.body);
 
       if (jsonDecoded['status'] == true) {
+
         return Success(response: jsonDecoded);
 
       }

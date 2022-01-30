@@ -73,13 +73,8 @@ void createMessageScreen(BuildContext context){
 
 }
 void homeScreenPage(BuildContext context){
-  //Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: HomePageScreen()));
-  Navigator.pushAndRemoveUntil(context,
-    MaterialPageRoute(
-      builder: (BuildContext context) => HomePageScreen(),
-    ),
-        (route) => false,
-  );
+  Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: HomePageScreen()));
+
 }
 
 void transferFundsRoute(BuildContext context){

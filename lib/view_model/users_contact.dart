@@ -11,6 +11,7 @@ import 'package:flutter/cupertino.dart';
 
 class ContactServicesViewModal extends ChangeNotifier{
   bool _loading  = false;
+  bool _changeIcon = false;
   UserError? _userError;
   String _infoText = "";
   List<String> _storedContacts = [];
@@ -20,6 +21,7 @@ class ContactServicesViewModal extends ChangeNotifier{
   String _smsSentAllContactText = "";
 
   bool get loading => _loading;
+  bool get changeIcon => _changeIcon;
   String get infoText => _infoText;
   UserError? get userError => _userError;
   String get smsSentText => _smsSentText;
@@ -40,8 +42,16 @@ class ContactServicesViewModal extends ChangeNotifier{
   setLoading(bool loading) async{
     _loading = loading;
   }
+  setChangeIcon(bool changeIcon) async{
+    _changeIcon = changeIcon;
+    notifyListeners();
+  }
   setInfoText(String infoText) async{
     _infoText = infoText;
+  }
+
+  changeCheckedIcon(){
+    setChangeIcon(!changeIcon);
   }
 
    addSelectedContact(item){
@@ -171,6 +181,9 @@ class ContactServicesViewModal extends ChangeNotifier{
             //save the contact
 
             await ContactServices.addContact();
+
+            //update message count for user
+             await SmsMessageServices.updateUserMessageCount();
             removeContact(newContact[i]);
              setSmsSentAllContactText("Message sent completely to ${sentContacts.length} contact(s)");
             setLoading(false);
@@ -183,7 +196,9 @@ class ContactServicesViewModal extends ChangeNotifier{
              await SmsMessageServices.saveUserMessage(email,fullName);
             //save the contact
             await ContactServices.addContact();
-             //selectedContacts.remove(i);
+
+             //update message count for user
+             await SmsMessageServices.updateUserMessageCount();
              removeContact(newContact[i]);
             setLoading(false);
           }

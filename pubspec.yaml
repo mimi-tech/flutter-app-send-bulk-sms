@@ -45,6 +45,8 @@ dependencies:
   flutter_svg: ^0.22.0
   sticky_headers: ^0.2.0
   country_code_picker: ^2.0.2
+  connectivity_plus: ^2.1.0
+  internet_connection_checker: ^0.0.1+3
 
 
 

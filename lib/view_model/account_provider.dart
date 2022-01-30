@@ -94,7 +94,7 @@ class AuthProvider with ChangeNotifier {
         }
         if(response is Failure){
           setLoading(false);
-          //notifyFlutterToastError(title: "${response.errorResponse}");
+          notifyFlutterToastError(title: "${response.errorResponse}");
         }
 
 

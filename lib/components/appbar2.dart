@@ -29,8 +29,8 @@ class _BulkSmsAppbarSecondState extends State<BulkSmsAppbarSecond> {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(widget.title,
-            style: Theme.of(context).textTheme.bodyText1!.copyWith(color: kWhiteColor),
+          Text(widget.title.toUpperCase(),
+            style: Theme.of(context).textTheme.bodyText1!.copyWith(color: kWhiteColor,fontWeight: FontWeight.bold),
           ),
          widget.deleteButton
         ],

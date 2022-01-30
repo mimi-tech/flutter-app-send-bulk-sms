@@ -1,13 +1,9 @@
-import 'package:bulk_sms/components/appbar.dart';
 import 'package:bulk_sms/components/appbar2.dart';
 import 'package:bulk_sms/components/modalProgressFunction.dart';
 import 'package:bulk_sms/components/progressIndicator.dart';
 import 'package:bulk_sms/components/sms_buttons.dart';
-import 'package:bulk_sms/models/new_user.dart';
 import 'package:bulk_sms/view_model/message_service_view_modal.dart';
-import 'package:bulk_sms/view_model/save_messages.dart';
 import 'package:bulk_sms/utility/colors.dart';
-import 'package:bulk_sms/view_model/users_Auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +18,6 @@ class _SavedMessageScreenState extends State<SavedMessageScreen> {
 
   @override
   Widget build(BuildContext context) {
-    NewUser user = Provider.of<UserProvider>(context).user;
 
      return ChangeNotifierProvider<MessageServices>(
          create: (context)=> MessageServices(),
@@ -33,7 +28,7 @@ class _SavedMessageScreenState extends State<SavedMessageScreen> {
     builder: (context, savedMessages, child) {
     return Scaffold(
           backgroundColor: Colors.blueGrey,
-          appBar: BulkSmsAppbarSecond(title: '${user.fullName} Messages',color:kBlackColor,
+          appBar: BulkSmsAppbarSecond(title: 'Sent Messages',color:kBlackColor,
           deleteButton: SmsButtonsNew(tapSmsButton: () async {
             await savedMessages.getDeleteAllSavedMessages();
           },color: kRedColor,title: "Delete all",),
@@ -214,8 +209,6 @@ class _SavedMessageScreenState extends State<SavedMessageScreen> {
 
                                               trailing: SmsButtonsNew(title: "Delete", color: kRedColor,tapSmsButton: () async {
                                                await savedMessages.getDeleteUserSavedMessages(snapshot.data[index]['msgId']);
-                                                //after deleting the message remove it from the list
-                                                savedMessages.storedMessages.removeAt(index);
                                               },)
                                             )
                                           ],

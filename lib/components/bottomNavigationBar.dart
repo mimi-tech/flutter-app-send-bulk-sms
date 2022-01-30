@@ -1,12 +1,9 @@
-import 'package:bulk_sms/components/appbar.dart';
-import 'package:bulk_sms/services/logout.dart';
+
 import 'package:bulk_sms/utility/colors.dart';
+import 'package:bulk_sms/utility/internet_connection.dart';
 import 'package:bulk_sms/utility/dimen.dart';
 import 'package:bulk_sms/views/LandingPage.dart';
-import 'package:bulk_sms/views/contacts.dart';
 import 'package:bulk_sms/views/profile/view_profile.dart';
-import 'package:bulk_sms/views/text2.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:bulk_sms/views/saved_message_screen.dart';
 import 'package:bulk_sms/views/Funds/wallet_screen.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +33,26 @@ class _BasicBottomNavBarState extends State<BasicBottomNavBar > {
       _selectedIndex = index;
     });
   }
+
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    InternetConnections().checkConnection(context);
+
+  }
+
+
+  @override
+  void deactivate() {
+    InternetConnections().dispose();
+    super.deactivate();
+    print("deactivate");
+  }
+
+
 
   @override
   Widget build(BuildContext context) {

@@ -53,16 +53,15 @@ class _CardDepositState extends State<CardDeposit> {
 
   //getting the shared pref of users card details
   UserPreferences().getCardDetailsNew().then((value) => {
+  if((value.cardFirstFourDigit != '' || value.cardFirstFourDigit != null)){
     binCardNumber = "${value.cardFirstFourDigit}",
     authorizationCode  = "${value.authorizationCode}",
     cardBankName  = "${value.cardBank}",
     _cardNumber.text = "${value.cardFirstFourDigit!.substring(0,4)}  xxxx  xxxx  ${value.cardLastFourDigit!.substring(0,4)}",
 
-    //add a listener to get card info
+  }}
+  );
 
-  }).catchError((error){
-    throw Exception(error);
-  });
 
 
 
@@ -81,8 +80,8 @@ class _CardDepositState extends State<CardDeposit> {
 
               return Consumer<FundWalletService2>(
                builder: (context, modal, child){
-                   //var result =  UserPreferences().getCardDetailsNew();
-                   if((binCardNumber != "")){
+
+                   if(binCardNumber != ''){
                      modal.getVerifyCardBin(context);
                    }
 
@@ -102,7 +101,15 @@ class _CardDepositState extends State<CardDeposit> {
                  mainAxisSize: MainAxisSize.min,
 
                  children: [
+                 FlatButton(onPressed: () async{
+                   print(binCardNumber);
+                   print(binCardNumber);
+                   var result = await UserPreferences().getCardDetailsNew();
+                   print(result.cardFirstFourDigit);
 
+                 }, child: Text("ksajsdk"),
+                 color: kGreenColor,
+                 ),
                  spacing(context),
 
                  Center(
@@ -322,8 +329,7 @@ class _CardDepositState extends State<CardDeposit> {
 
                                 //get the last digit
 
-                                print(inputFirstBinDigit);
-                                if((inputFirstBinDigit == saveFirstBinDigit) && authorizationCode != ""){
+                                if((inputFirstBinDigit == saveFirstBinDigit) && authorizationCode != ''){
                                   //charge customer from authorization
                                  await modal.chargeAuthorization(context,user.email);
                                 }else{

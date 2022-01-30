@@ -29,7 +29,7 @@ String cardName = '';
 int? expiryMonth;
 int? expiryYear;
 int? amount;
-var binCardNumber;
+String? binCardNumber;
 var authorizationCode;
 //List<dynamic> selectedContacts = <dynamic>[];
 
