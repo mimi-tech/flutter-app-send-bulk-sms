@@ -5,8 +5,10 @@ import 'package:bulk_sms/repos/api_status.dart';
 import 'package:bulk_sms/services/contact_services.dart';
 import 'package:bulk_sms/services/message_services.dart';
 import 'package:bulk_sms/view_model/account_provider.dart';
+import 'package:bulk_sms/views/createMessage/add_new_group_contact.dart';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 
 class ContactServicesViewModal extends ChangeNotifier{
@@ -16,9 +18,12 @@ class ContactServicesViewModal extends ChangeNotifier{
   String _infoText = "";
   List<String> _storedContacts = [];
   List<String> _selectedContacts = <String>[];
+  List<String> _enteredContact = <String>[];
   List<String> contact = <String>[];
+  List<dynamic> _allContact = <dynamic>[];
   String _smsSentText = "";
   String _smsSentAllContactText = "";
+  Map<String, List<dynamic>>? _selectedContactGroup;
 
   bool get loading => _loading;
   bool get changeIcon => _changeIcon;
@@ -27,7 +32,10 @@ class ContactServicesViewModal extends ChangeNotifier{
   String get smsSentText => _smsSentText;
   String get smsSentAllContactText => _smsSentAllContactText;
   List<String> get storedContacts => _storedContacts;
+  List<dynamic> get allContact => _allContact;
   List<String> get selectedContacts => _selectedContacts;
+  List<String> get enteredContact => _enteredContact;
+  Map<String, List<dynamic>>? get selectedContactGroup => _selectedContactGroup;
 
   setStoredContacts(List<String> storedContacts) {
     _storedContacts = storedContacts;
@@ -36,6 +44,10 @@ class ContactServicesViewModal extends ChangeNotifier{
 
   setSelectedContacts(List<String> selectedContacts) {
     _selectedContacts = selectedContacts;
+    notifyListeners();
+  }
+  setEnteredContacts(List<String> enteredContact) {
+    _enteredContact = enteredContact;
     notifyListeners();
   }
 
@@ -57,10 +69,31 @@ class ContactServicesViewModal extends ChangeNotifier{
    addSelectedContact(item){
      contact.add(item);
      pickedContacts.add(item);
-     newContact.add(item);
+     //newContact.add(item);
     setSelectedContacts(contact);
     //notifyListeners();
 }
+
+  addEnteredContact(item){
+    enteredContact.add(item);
+    allContact.add(item);
+    pickedContacts.add(item);
+    //remove duplicate
+   allContact.toSet().toList();
+
+    setEnteredContacts(enteredContact);
+    notifyListeners();
+  }
+  removeEnteredContact(item){
+    enteredContact.remove(item);
+    allContact.remove(item);
+    pickedContacts.remove(item);
+    //remove duplicate
+    allContact.toSet().toList();
+    setEnteredContacts(enteredContact);
+    notifyListeners();
+  }
+
 
    removeContact(item){
     contact.remove(item);
@@ -78,6 +111,46 @@ class ContactServicesViewModal extends ChangeNotifier{
  setSmsSentAllContactText(String smsSentAllContactText) async{
    _smsSentAllContactText = smsSentAllContactText;
     notifyListeners();
+  }
+
+  setSelectedContactGroup(Map<String, List<dynamic>> selectedContactGroup) {
+    _selectedContactGroup = selectedContactGroup;
+    notifyListeners();
+  }
+
+  addGroupContact({required name, required contact}){
+
+    List<SelectedContactGroup> contacts= [];
+    contacts.add(SelectedContactGroup(name:name,contact: contact));
+    userGroupContacts.addAll(contacts);
+    var map1 = {for (var e in userGroupContacts) e.name: e.contact};
+    setSelectedContactGroup(map1);
+
+    List<dynamic>  allList = [];
+
+    for(int i = 0; i <selectedContactGroup!.values.toList().length; i++){
+      allList.addAll(selectedContactGroup!.values.toList()[i]);
+    }
+
+
+  allContact.clear();
+   allContact.addAll(allList);
+   allContact.addAll(pickedContacts);
+    notifyListeners();
+  }
+
+  void removeGroupContact({required name,}){
+     selectedContactGroup!.removeWhere((key, value) => key.contains(name));
+
+     List<dynamic>  allList = [];
+
+     for(int i = 0; i <selectedContactGroup!.values.toList().length; i++){
+       allList.addAll(selectedContactGroup!.values.toList()[i]);
+     }
+     allContact.clear();
+     allContact.addAll(allList.toSet());
+     allContact.addAll(pickedContacts);
+     notifyListeners();
   }
 
   getViewContact() async {
@@ -150,31 +223,95 @@ class ContactServicesViewModal extends ChangeNotifier{
 
     }}
 
+  //adding group contact
+
+  getAddGroupContact(BuildContext context) async {
+    if(enteredContact.length != 0){
+      print(enteredContact);
+    setLoading(true);
+    var response = await ContactServices.userGroupContact();
+    if(response is Success){
+      notifyFlutterToastSuccess(title:"Contacts grouped successfully");
+
+      setLoading(false);
+    }
+    if(response is Failure){
+      setLoading(false);
+
+       notifyFlutterToastError(title: response.errorResponse);
+
+    }}else{
+       notifyFlutterToastError(title: "Please add contacts");
+
+    }
+  }
+
+//delete contact group
+  getDeleteGroupContact({required contactNameBYID}) async {
+
+      setLoading(true);
+      var response = await ContactServices.deleteUserContactGroup(contactNameBYID);
+      if(response is Success){
+        notifyFlutterToastSuccess(title:"Contacts grouped deleted successfully");
+
+        setLoading(false);
+      }
+      if(response is Failure){
+        setLoading(false);
+
+        notifyFlutterToastError(title: response.errorResponse);
+
+      }
+
+  }
+
+
+//delete contact group
+  getDeleteSingleGroupContact({required contactNameBYID,required contact}) async {
+
+    setLoading(true);
+    var response = await ContactServices.deleteASingleGroupContact(contactNameBYID,contact);
+    if(response is Success){
+      notifyFlutterToastSuccess(title:"Contact removed successfully");
+
+      setLoading(false);
+    }
+    if(response is Failure){
+      setLoading(false);
+
+      notifyFlutterToastError(title: response.errorResponse);
+
+    }
+
+  }
+
 
 
 
   //sending bulk sms
-  getSendBulkSms(BuildContext context, email, fullName) async {
+  getSendBulkSms({required context, required fullName,required email}) async {
+
+    setLoading(true);
     sentContacts.clear();
     failedContacts.clear();
-    if(newContact.length != 0){
-      setLoading(true);
-      for(int i = 0; i < newContact.length; i++){
-        var response = await SmsMessageServices.sendSms(phoneNumber: newContact[i],message: smsMessage,from: messageTitle);
+
+
+      for(int i = 0; i < allContact.length; i++){
+        var response = await SmsMessageServices.sendSms(phoneNumber: allContact[i],message: smsMessage,from: messageTitle);
         if(response is Success){
           //update wallet for sms
          await SmsMessageServices.updateWalletForSms();
           setSmsSentText("Message sent successfully");
-          sentContacts.add(newContact[i]);
+          sentContacts.add(allContact[i]);
           Future.delayed(Duration(seconds: 4), () {
             setSmsSentText("");
           });
 
-          removeContact(newContact[i]);
+          //removeContact(newContact[i]);
 
           await AuthProvider().getLoggedInUserDetails(context);
 
-          if( i + 1 == newContact.length){
+          if( i + 1 == allContact.length){
 
             //save the message
              await SmsMessageServices.saveUserMessage(email,fullName);
@@ -184,35 +321,41 @@ class ContactServicesViewModal extends ChangeNotifier{
 
             //update message count for user
              await SmsMessageServices.updateUserMessageCount();
-            removeContact(newContact[i]);
+            //removeContact(allContact[i]);
              setSmsSentAllContactText("Message sent completely to ${sentContacts.length} contact(s)");
             setLoading(false);
+
+            //show bottom sheet to add contact list if new contact where add
+
+            if(pickedContacts.length != 0){
+              showModalBottomSheet(
+
+                  isScrollControlled: true,
+                  context: context,
+                  builder: (context) => AddNewContactsGroup()
+              );
+            }
+
           }
         }
         if(response is Failure){
-          failedContacts.add(newContact[i]);
+          failedContacts.add(allContact[i]);
           setSmsSentText("${response.errorResponse}");
-          if( i + 1 == newContact.length){
+          if( i + 1 == allContact.length){
              await SmsMessageServices.saveUserMessage(email,fullName);
             //save the contact
             await ContactServices.addContact();
 
              //update message count for user
              await SmsMessageServices.updateUserMessageCount();
-             removeContact(newContact[i]);
+             //removeContact(newContact[i]);
             setLoading(false);
           }
 
         }
       }
 
-    }else{
-      setSmsSentText("Please select or add mobile number");
-      Future.delayed(Duration(seconds: 4), () {
-        setSmsSentText("");
-      });
-      notifyFlutterToastError(title: "Please select or add mobile number");
-    }
+
   }
 
 

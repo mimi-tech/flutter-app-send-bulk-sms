@@ -72,10 +72,10 @@ final kCaptionStyle = TextStyle(
   color: kOrangeColor,
 );
 
-final kOverlineStyle = TextStyle(
-  fontSize: kFontSize12.sp,
+final kOverLineStyle = TextStyle(
+  fontSize: kFontSize16.sp,
   fontWeight: FontWeight.w500,
-  color: kWhiteColor,
+  color: kHintColor,
 );
 
 final kButtonTextStyle = TextStyle(
