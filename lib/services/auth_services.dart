@@ -137,6 +137,7 @@ class AuthServices {
         return Failure(code: NO_INTERNET, errorResponse: "No internet connection");
 
       } catch(e){
+      print("unknjdhjhd $e");
       return Failure(code: UNKNOWN_ERROR, errorResponse: "Unknown error");
     }
 

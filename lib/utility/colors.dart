@@ -16,4 +16,6 @@ const kAshColor = Color(0xFFA59F9F);
 const kListView =Color(0xFF1e141d);
 const kLightBlue = Colors.cyan;
 const kGreenColor = Colors.green;
+const kDarkBlue = Color(0xFF212D3A);
+const kLightAsh = Color(0xFFFAFAFC);
 

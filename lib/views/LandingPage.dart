@@ -38,7 +38,7 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
 NewUser user = Provider.of<UserProvider>(context).user;
-
+print(user.userId);
     return SafeArea(child: Scaffold(
 
         floatingActionButton: FloatingActionButton(
@@ -46,7 +46,7 @@ NewUser user = Provider.of<UserProvider>(context).user;
           shape: CircleBorder(),
           child: Icon(Icons.add,size: 30,color: kWhiteColor,),
 
-          onPressed: () {  createMessageScreen(context);},
+          onPressed: () {  messageTabViewScreen(context);},
         ),
         body: Container(
       decoration: BoxDecoration(

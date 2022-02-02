@@ -57,7 +57,7 @@ class _ContactScreenState extends State<ContactScreen> {
                 modal.changeIcon?
                 IconButton(onPressed: (){
                   modal.changeCheckedIcon();
-                  newContact.clear();
+                  //newContact.clear();
                   for(int i = 0; i < modal.storedContacts.length; i++){
                     modal.removeContact(modal.storedContacts[i]);
 

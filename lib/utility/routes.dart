@@ -7,7 +7,10 @@ import 'package:bulk_sms/views/Registration/email_screen.dart';
 import 'package:bulk_sms/views/Registration/password_screen.dart';
 import 'package:bulk_sms/views/Registration/phone_number_screen.dart';
 import 'package:bulk_sms/views/Registration/signup_screen.dart';
-import 'package:bulk_sms/views/create_message.dart';
+import 'package:bulk_sms/views/contacts.dart';
+import 'package:bulk_sms/views/createMessage/create_message.dart';
+import 'package:bulk_sms/views/createMessage/message_tab_view.dart';
+import 'package:bulk_sms/views/createMessage/view_contact_group.dart';
 import 'package:bulk_sms/views/forgotPassword/change_password.dart';
 import 'package:bulk_sms/views/forgotPassword/verify_email.dart';
 import 'package:bulk_sms/views/homePage.dart';
@@ -72,6 +75,11 @@ void createMessageScreen(BuildContext context){
   Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: CreateMessage()));
 
 }
+
+void messageTabViewScreen(BuildContext context){
+  Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: MessageTabView()));
+
+}
 void homeScreenPage(BuildContext context){
   Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: HomePageScreen()));
 
@@ -79,6 +87,16 @@ void homeScreenPage(BuildContext context){
 
 void transferFundsRoute(BuildContext context){
   Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: TransferFunds()));
+
+}
+
+void contactScreenRoute(BuildContext context){
+  Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: ContactScreen()));
+
+}
+
+void contactGroupScreenRoute(BuildContext context){
+  Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: ViewGroupContactScreen()));
 
 }
 

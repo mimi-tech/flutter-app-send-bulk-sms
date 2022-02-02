@@ -389,11 +389,8 @@ class _CardDepositState extends State<CardDeposit> {
 
     // Checking if the transaction is successful
     if (response.message == 'Success') {
-      print("successful charge");
       print(response.reference);
       modal.fundingUserWallet(response.reference,context);
-    }else{
-      print("Good");
     }
   }
   PaymentCard _getCardFromUI() {

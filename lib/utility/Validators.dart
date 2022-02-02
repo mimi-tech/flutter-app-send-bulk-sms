@@ -13,6 +13,41 @@ class Validator {
     return null;
   }
 
+  static String? validateFrom(String? value) {
+    if(value!.isEmpty) {
+      return "Message title can't be empty";
+    }
+    if(value.length < 2) {
+      return "Message title is too short";
+    }
+
+    return null;
+  }
+
+
+  static String? validateMessage(String? value) {
+    if(value!.isEmpty) {
+      return "Message can't be empty";
+    }
+    if(value.length < 4) {
+      return "Message is too short";
+    }
+
+    return null;
+  }
+
+
+  static String? validateContactTitle(String? value) {
+    if(value!.isEmpty) {
+      return "Contact title can't be empty";
+    }
+    if(value.length < 3) {
+      return "Contact title is too short";
+    }
+
+    return null;
+  }
+
 
 
   static String? validatePhoneNumber(String? value) {

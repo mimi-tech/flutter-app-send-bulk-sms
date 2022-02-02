@@ -53,7 +53,7 @@ class CustomTheme {
            subtitle1: kSubTitle1Style,
            subtitle2: kSubTitle2Style,
            caption: kCaptionStyle,
-           overline: kOverlineStyle,
+           overline: kOverLineStyle,
            button: kButtonTextStyle,
          ),
         cardTheme: kCardTheme,

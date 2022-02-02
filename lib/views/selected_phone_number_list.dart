@@ -1,6 +1,7 @@
 import 'package:bulk_sms/components/constants.dart';
 import 'package:bulk_sms/components/sms_buttons.dart';
 import 'package:bulk_sms/utility/colors.dart';
+import 'package:bulk_sms/utility/dimen.dart';
 import 'package:bulk_sms/view_model/users_contact.dart';
 import 'package:bulk_sms/views/contacts.dart';
 import 'package:flutter/material.dart';
@@ -25,53 +26,55 @@ class _SelectedPhoneNumberListState extends State<SelectedPhoneNumberList> {
       return  Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        modal.selectedContacts.length == 0?
-    Text("Please select Contact or add new contact. Note: Maximum of 50 contacts at a time",
-    style: Theme.of(context).textTheme.bodyText1!.apply(color: kTextColor)
-    )
-            :Text("${modal.selectedContacts.length.toString()} Contact(s)",
-            style: Theme.of(context).textTheme.bodyText1!.apply(color: kTextColor)
-        ),
-    Container(
-    height:50.h,
 
-        child: ListView.builder(
-        physics:  BouncingScrollPhysics(),
+    Container(
+    height:25.h,
+
+        child: Row(
+          children: [
+            Expanded(
+              child: ListView.builder(
+              physics:  BouncingScrollPhysics(),
     scrollDirection: Axis.horizontal,
     itemCount:modal.selectedContacts.length,
     shrinkWrap: true,
     itemBuilder: (BuildContext ctxt, int index) {
     return Padding(
     padding: EdgeInsets.symmetric(horizontal: 2.0, ),
-    child: GestureDetector(
-      child: Container(
-        decoration: BoxDecoration(
-          color: kLightBlue,
-          borderRadius: BorderRadius.circular(30.0)
-        ),
-      width: 180.w,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
+    child:OutlinedButton.icon(
 
-            Text(modal.selectedContacts[index],
-                style: Theme.of(context).textTheme.bodyText1!.apply(color: kWhiteColor)
+      icon: Icon(Icons.cancel,color: kBlackColor,),
+      onPressed: () {
+              modal.removeContact(modal.selectedContacts[index]);
+              //newContact.remove(modal.selectedContacts[index]);
+      },
+      style: OutlinedButton.styleFrom(
+              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(30))),
+
+              side: BorderSide(color: kBlackColor, width: 1),
+      ),
+    label: Text(modal.selectedContacts[index],
+      style: Theme.of(context).textTheme.subtitle1!.copyWith(color: kBlackColor,fontSize: kFontSize12)
+      ),
+
+      )
+    );
+              }),
             ),
 
-            Expanded(
-
-                child: IconButton(
-
-                    onPressed: (){
-                      modal.removeContact(modal.selectedContacts[index]);
-                      newContact.remove(modal.selectedContacts[index]);
-                    }, icon:Icon(Icons.cancel,size: 30,color: kWhiteColor,))),
-
+            Material(
+              borderRadius: BorderRadius.circular(4),
+              color: kRedColor,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text("+ ${modal.selectedContacts.length}".toString(),
+                    style: Theme.of(context).textTheme.subtitle1!.copyWith(color: kWhiteColor,fontSize: kFontSize12,fontWeight: FontWeight.bold)
+                ),
+              ),
+            )
           ],
-        )
-      ),
-    ));
-        })),
+        )),
+
 
 
       ],
