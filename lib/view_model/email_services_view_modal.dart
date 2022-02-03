@@ -42,7 +42,6 @@ class MessageServicesEmail extends ChangeNotifier{
 
     var response = await SmsMessageServices.sendEmail();
     if(response is Success){
-      print("email sent");
 
       setLoading(false);
 

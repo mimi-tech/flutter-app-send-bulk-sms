@@ -4,9 +4,9 @@
          "description": "Informative text if user already have an account"
      },
 
-     "appName": "Bulk sms",
+     "appName": "sms delight",
      "@appName": {
-        "description": "Bulk sms"
+        "description": "sms delight"
      },
 
      "helloWorld": "Hello World!",
@@ -55,9 +55,14 @@
         "description": "Please enter your phone number correctly"
   },
 
-     "phoneText": "Please make sure this phone number is correct because it would be validated",
+     "phoneText": "Please make sure this phone number is correct because it would be validated.",
      "@phoneText": {
         "description": "Please make sure this phone number is correct because it would be validated"
+  },
+
+  "phoneText2": "Please make sure this phone number have not been used to create an account with us",
+  "@phoneText2": {
+    "description": "Please make sure this phone number have not been used to create an account with us"
   },
 
      "phoneNumber": "Phone Number",
@@ -103,6 +108,11 @@
      "emailSubtitle": "Please make sure this email address is correct because it would be validated",
      "@emailSubtitle": {
         "description": "Please make sure this email address is correct because it would be validated"
+  },
+
+    "emailSubtitle2": "Please make sure this email address have not been used to create an account with us",
+    "@emailSubtitle2": {
+       "description": "Please make sure this email address have not been used to create an account with us"
   },
 
      "emailText": "Enter email address",
@@ -260,7 +270,7 @@
 
     "transferCaption": "These is where you can transfer funds from your account to another account",
     "@transferCaption": {
-       "description": "Receiver's emil address"
+       "description": "These is where you can transfer funds from your account to another account"
   }
 
 }

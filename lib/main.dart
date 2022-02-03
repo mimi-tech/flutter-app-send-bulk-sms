@@ -53,9 +53,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
         title: 'Bulk sms',
         theme: CustomTheme.lightTheme(),
-          onGenerateTitle: (context) {
-            return AppLocalizations.of(context)!.helloWorld;
-          },
+
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           //supportedLocales: ['en','fr'],

@@ -2,11 +2,9 @@ import 'package:bulk_sms/components/appbar.dart';
 import 'package:bulk_sms/components/constants.dart';
 import 'package:bulk_sms/components/modalProgressFunction.dart';
 import 'package:bulk_sms/components/sms_buttons.dart';
-import 'package:bulk_sms/components/validation_dialog.dart';
 import 'package:bulk_sms/utility/Validators.dart';
 import 'package:bulk_sms/utility/colors.dart';
 import 'package:bulk_sms/utility/dimen.dart';
-import 'package:bulk_sms/utility/routes.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -149,7 +147,9 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                             if (!currentFocus.hasPrimaryFocus) {
                               currentFocus.unfocus();
                             }
-                            emailScreen(context);
+
+                            modal.smsMessageService(context: context);
+                            //emailScreen(context);
                           }
                         })
                   ),

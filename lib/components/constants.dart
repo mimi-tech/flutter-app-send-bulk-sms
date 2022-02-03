@@ -18,7 +18,7 @@ String? password = '';
 String phoneCode = '';
 dynamic codeSent;
 bool isForgotPassword = false;
-String messageFrom = "BULK SMS";
+String messageFrom = "SMS DELIGHT";
 
 const USER_INVALID_RESPONSE = 101;
 const NO_INTERNET = 102;

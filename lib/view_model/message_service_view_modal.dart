@@ -2,6 +2,7 @@ import 'package:bulk_sms/components/constants.dart';
 import 'package:bulk_sms/components/validation_dialog.dart';
 import 'package:bulk_sms/models/user_error.dart';
 import 'package:bulk_sms/repos/api_status.dart';
+import 'package:bulk_sms/utility/generateCode.dart';
 import 'package:bulk_sms/utility/routes.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -55,11 +56,11 @@ class MessageServices extends ChangeNotifier{
   smsMessageService({required context}) async {
     setLoading(true);
 
-
+    GenerateCode.generateCode();
 
     var response = await SmsMessageServices.sendSms(
       phoneNumber: phoneNumber,
-      message:  "${AppLocalizations.of(context)!.emailCodeSentText} + $codeSent",
+      message:  "Sms delight phone number verification code $codeSent",
       from: messageFrom
     );
     if(response is Success){
@@ -96,7 +97,7 @@ class MessageServices extends ChangeNotifier{
   }
 
   verifyUserCode(context) {
-    if(codeSent == phoneCode){
+    if(codeSent == int.parse(phoneCode)){
       emailScreen(context);
     }else{
       notifyFlutterToastError(title: "Sorry incorrect code");

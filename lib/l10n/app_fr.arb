@@ -1,5 +1,111 @@
 {
   "alreadyHaveAccount": "Vous avez déjà un compte? Connectez-vous ci-dessous",
 
-  "helloWorld": "Bonjour le monde"
+  "appName": "sms delight",
+
+  "helloWorld": "Bonjour le monde",
+
+  "loginText": "Connexion",
+
+  "welcomeTitle": "Envoyer\nmessage\nfacile",
+
+  "welcomeDesc": "Envoyez votre message facilement et très bien personnalisé\nà un tarif moins cher\nà n'importe quelle partie du monde",
+
+  "signupText": "Inscrivez-vous",
+
+  "appbarRegText": "Inscription",
+
+  "fullName": "Nom complet",
+
+  "fullNameErrorText": "S'il vous plait entrez votre nom entier",
+
+  "phoneErrorText": "Veuillez entrer votre numéro de téléphone correctement",
+
+  "phoneText": "Veuillez vous assurer que ce numéro de téléphone est correct car il serait validé",
+
+  "phoneText2": "Veuillez vous assurer que ce numéro de téléphone n'a pas été utilisé pour créer un compte chez nous",
+
+  "phoneNumber": "Numéro de téléphone",
+
+  "phoneNumberCodeSent": "Un code a été envoyé à",
+
+  "phoneNumberCodeSent2": "Veuillez entrer le code ici",
+
+  "done": "Fait",
+
+  "cancel": "Annuler",
+
+  "validate": "Valider",
+
+  "validateTitle": "Validation du numéro de téléphone",
+
+  "validateEmailTitle": "E-mail de validation",
+
+  "emailSubtitle": "Veuillez vous assurer que cette adresse e-mail est correcte car elle serait validée",
+
+  "emailSubtitle2": "Veuillez vous assurer que cette adresse e-mail n'a pas été utilisée pour créer un compte chez nous",
+
+  "emailText": "Entrer l'adresse e-mail",
+
+  "validateEmailTitle2": "Validation de l'adresse e-mail",
+
+  "passwordText": "Entrer le mot de passe",
+
+  "submitText": "Soumettre",
+
+  "loginText2": "Veuillez vous connecter",
+
+  "create": "Créer",
+
+  "forgotPassword": "Mot de passe oublié?",
+
+  "fundWallet": "Portefeuille de fonds",
+
+  "cardDetails": "Entrez les détails de votre carte",
+
+  "payWithBank": "utiliser la banque",
+
+  "payWithBankAccount": "Fonds de portefeuille avec votre banque",
+
+  "payWithBankAccount1": "Veuillez sélectionner votre banque",
+
+  "payWithBankAccount2": "Veuillez saisir correctement votre numéro de compte",
+
+  "payWithBankAccount3": "Veuillez saisir le montant que vous souhaitez financer",
+
+  "createMessage": "Créer un message",
+
+  "sendMessage": "Envoyer",
+
+  "sendMessageText": "Chaque message envoyé vous coûtera #1.30k\nRemarque : Votre message n'est exposé à personne",
+
+  "confirmPassword": "Confirmez le mot de passe",
+
+  "regResponse": "Inscription échouée",
+
+  "loginSuccess": "Connexion réussie",
+
+  "loginNotSuccess": "La connexion n'a pas réussi",
+
+  "regSuccess": "inscription réussi",
+
+  "emailCodeSentText": "Validation du code e-mail SMS en masse",
+
+  "successful": "À succès",
+
+  "forgotPasswordText": "Mot de passe oublié",
+
+  "loading": "Chargement...",
+
+  "errorText": "Désolé, une erreur s'est produite",
+
+  "errorText2": "Désolé, nous n'avons pas pu résoudre la carte",
+
+  "transferText": "Transfert",
+
+  "transferText2": "Montant à transférer",
+
+  "transferText3": "Adresse e-mail du destinataire",
+
+  "transferCaption": "C'est là que vous pouvez transférer des fonds de votre compte vers un autre compte"
 }

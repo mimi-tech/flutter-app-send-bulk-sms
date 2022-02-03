@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bulksms.bulk_sms">
    <application
-        android:label="bulk sms"
+        android:label="Sms Delight"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
