@@ -1,4 +1,4 @@
-package com.example.bulksms.bulk_sms
+package com.smsdelight.smsdelight
 
 import io.flutter.embedding.android.FlutterActivity
 

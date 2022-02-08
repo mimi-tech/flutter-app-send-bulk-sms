@@ -38,7 +38,6 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
 NewUser user = Provider.of<UserProvider>(context).user;
-print(user.userId);
     return SafeArea(child: Scaffold(
 
         floatingActionButton: FloatingActionButton(
@@ -128,6 +127,8 @@ print(user.userId);
 
               ],
             ),
+
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05)
 
           ],
         )

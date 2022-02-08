@@ -25,7 +25,7 @@ class _BulkSmsAppbarState extends State<BulkSmsAppbar> {
         },
       ),
       backgroundColor: widget.color,
-      title: Text(widget.title,
+      title: Text(widget.title.toUpperCase(),
         style: Theme.of(context).textTheme.bodyText1!.copyWith(color: kWhiteColor),
       ),
     );
